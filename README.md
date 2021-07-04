@@ -16,3 +16,5 @@ A Wox plugin for opening bilibili pages and searching videos
 Type "bli" to list some frequently-used bilibili pages
 
 Type "bli {SearchContext}" to search
+
+Type "bli {Prefix+id}" to open pages directly
