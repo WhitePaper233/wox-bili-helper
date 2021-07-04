@@ -2,7 +2,7 @@
 A Wox plugin for opening bilibili pages and searching videos
 
 
-# Usage
+## Usage
 1.Download the latest release
 
 2.Unzip the release file
@@ -12,7 +12,7 @@ A Wox plugin for opening bilibili pages and searching videos
 4.Restart your wox
 
 
-# Functions
+## Functions
 Type "bli" to list some frequently-used bilibili pages
 
 Type "bli {SearchContext}" to search
