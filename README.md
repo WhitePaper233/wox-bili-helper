@@ -7,6 +7,6 @@ A Wox plugin for opening bilibili pages and searching videos
 3.Drag the folder into your wox plugin folder
 4.Restart your wox
 
-#Functions
+# Functions
 Type "bli" to list some frequently-used bilibili pages
 Type "bli <text>" to search
