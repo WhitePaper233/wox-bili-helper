@@ -1,0 +1,12 @@
+{
+    "ID":"8D4015A4B4AC490AAD7A781B8E71DF57",
+    "ActionKeyword":"bli",
+    "Name":"Bili Helper",
+    "Description":"Open bilibili.com fast",
+    "Author":"WhitePaper233",
+    "Version":"1.0.0",
+    "Language":"python",
+    "Website":"https://whitepaper233.gitee.io/",
+    "IcoPath": "bili.ico",
+    "ExecuteFileName":"plugin.py"
+  }
