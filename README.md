@@ -15,4 +15,4 @@ A Wox plugin for opening bilibili pages and searching videos
 # Functions
 Type "bli" to list some frequently-used bilibili pages
 
-Type "bli <text>" to search
+Type "bli {SearchContext}" to search
