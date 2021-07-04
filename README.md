@@ -2,7 +2,7 @@
 A Wox plugin for opening bilibili pages and searching videos
 
 
-## Install
+## Installation
 1.Download the latest release
 
 2.Unzip the release file
