@@ -4,9 +4,9 @@
     "Name":"Bili Helper",
     "Description":"Open bilibili.com fast",
     "Author":"WhitePaper233",
-    "Version":"1.0.0",
+    "Version":"Dev-2.0.0",
     "Language":"python",
     "Website":"https://whitepaper233.gitee.io/",
-    "IcoPath": "bili.ico",
+    "IcoPath": "icons/bili.ico",
     "ExecuteFileName":"plugin.py"
   }
