@@ -75,7 +75,7 @@ def generate_article_result(*args) -> dict:
     args = args[0]
     dictionary = {
         "Title": args[0],
-        "SubTitle": '''UP主:{}  浏览:{}  收藏:{}  点赞:{}  回复:{}  分享:{}  投币'''.format
+        "SubTitle": '''UP主:{}  浏览:{}  收藏:{}  点赞:{}  回复:{}  分享:{}  投币{}'''.format
         (args[1], args[2], args[3], args[4], args[5], args[6], args[7]),
         "IcoPath": "icons/bili.ico",
         "ContextData": "ctxData",
