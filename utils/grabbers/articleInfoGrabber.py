@@ -33,4 +33,4 @@ def get_article_info(aid: str):
 
 
 if __name__ == '__main__':
-    print(get_article_info('Cv4890667'))
+    print(main('cv12032529'))
