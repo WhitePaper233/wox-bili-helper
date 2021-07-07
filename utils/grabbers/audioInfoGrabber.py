@@ -10,7 +10,7 @@ def main(auid: int):
 
 
 def get_audio_info(auid):
-    error_return = ['未找到该专栏相关信息，请检查音频ID是否正确和网络连接是否正常', '未知', '未知', 0, 0, 0, 0]
+    error_return = ['未找到该音频的相关信息，请检查音频ID是否正确和网络连接是否正常', '未知', '未知', 0, 0, 0, 0]
     try:
         info = main(auid)
         # 返回信息

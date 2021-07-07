@@ -48,7 +48,7 @@ class BasicInterpreter:
 
             elif prefix == 'ss' and key.replace(key[0:2], '').isdecimal():
                 # Advanced searching by using ssid
-                result.append()
+                result.append(generate_bangumi_result(idInterpreter.IDInterpreter.id_interpreter(id_type='ssid',key=key)))
 
             result.append(generate_search_result(key))
             return result

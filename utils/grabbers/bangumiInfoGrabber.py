@@ -9,7 +9,7 @@ def main(ssid: int):
 
 
 def get_bangumi_info(ssid: int):
-    error_return = ['未找到该专栏相关信息，请检查音频ID是否正确和网络连接是否正常', '未知', '未知', 0, 0, 0, 0]
+    error_return = ['未找到该剧集的相关信息，请检查音频ID是否正确和网络连接是否正常', 0, 0, 0, 0, 0, 0, ssid]
     try:
         info = main(ssid)
         # 返回信息
@@ -21,7 +21,8 @@ def get_bangumi_info(ssid: int):
             info['stat']['danmakus'],
             info['stat']['favorites'],
             info['stat']['reply'],
-            info['stat']['share']
+            info['stat']['share'],
+            ssid
         ]
         return return_list
 

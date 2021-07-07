@@ -2,6 +2,7 @@
 import utils.grabbers.videoInfoGrabber as videoInfo
 import utils.grabbers.articleInfoGrabber as articleInfo
 import utils.grabbers.audioInfoGrabber as audioInfo
+import utils.grabbers.bangumiInfoGrabber as bangumiInfo
 
 
 class IDInterpreter:
@@ -33,6 +34,10 @@ class IDInterpreter:
             return_list = audioInfo.get_audio_info(key.replace(key[0:2], ''))
             return_list.append(key.lower())
             return return_list
+
+        elif id_type == 'ssid':
+            # Format ssid
+            return bangumiInfo.get_bangumi_info(int(key.replace(key[0:2], '')))
 
         else:
             # Throw Error

@@ -117,5 +117,35 @@ def generate_audio_result(*args) -> dict:
     return dictionary
 
 
+def generate_bangumi_result(*args) -> dict:
+    """
+    :param args:{
+                [0]: title
+                [1]: total
+                [2]: views
+                [3]: coins
+                [4]: danmakus
+                [5]: favorites
+                [6]: reply
+                [7]: share
+                [8]: ssid
+    :return: search result
+    """
+    args = args[0]
+    dictionary = {
+        "Title": args[0],
+        "SubTitle": '''总{}集  播放:{}  硬币:{}  弹幕:{}  收藏:{}  评论:{}  分享{}'''.format
+        (args[1], args[2], args[3], args[4], args[5], args[6], args[7]),
+        "IcoPath": "icons/bili.ico",
+        "ContextData": "ctxData",
+        "JsonRPCAction": {
+            'method': 'open_page',
+            'parameters': ['https://www.bilibili.com//bangumi/play/ss{}'.format(args[8])],
+            'dontHideAfterAction': False
+        }
+    }
+    return dictionary
+
+
 if __name__ == '__main__':
     print(generate_search_result(key='cv12032529'))
