@@ -1,7 +1,5 @@
 # -*-coding:utf-8-*-
 import webbrowser
-from utils.generators.resultGenerator import *
-from utils.grabbers import videoInfoGrabber
 from utils.interpreters import basicInterpreter
 from wox import Wox, WoxAPI
 

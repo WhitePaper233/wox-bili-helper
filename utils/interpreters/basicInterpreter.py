@@ -58,4 +58,4 @@ class BasicInterpreter:
 
 
 if __name__ == '__main__':
-    print(BasicInterpreter.interpret('av10492'))
+    print(BasicInterpreter.interpret('ss10'))

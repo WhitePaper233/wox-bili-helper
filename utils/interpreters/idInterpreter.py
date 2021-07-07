@@ -42,3 +42,7 @@ class IDInterpreter:
         else:
             # Throw Error
             return TypeError('No such id_type "{}"'.format(id_type))
+
+
+if __name__ == '__main__':
+    print(IDInterpreter.id_interpreter('ssid', key='ss10'))
