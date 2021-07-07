@@ -34,7 +34,7 @@ class BasicInterpreter:
                 # Advanced searching by using aid
                 result.append(generate_video_result(idInterpreter.IDInterpreter.id_interpreter(id_type='aid', key=key)))
 
-            elif prefix == 'bv' and ' ' not in key.replace(key[0:2], '') and len(key) >= 3:
+            elif prefix == 'bv' and ' ' not in key.replace(key[0:2], '', 1) and len(key) >= 3:
                 # Advanced searching by using bvid
                 result.append(generate_video_result(idInterpreter.IDInterpreter.id_interpreter(id_type='bvid', key=key)))
 
