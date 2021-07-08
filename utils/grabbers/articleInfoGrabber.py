@@ -3,17 +3,17 @@ from bilibili_api import article, exceptions
 import asyncio
 
 
-async def main(aid: str):
-    a = article.Article(cvid=int(aid.replace(aid[0:2], '')))
+async def main(aid: int):
+    a = article.Article(cvid=aid)
     # 获取信息
     info = await a.get_info()
     return info
 
 
 def get_article_info(aid: str):
-    error_return = ['未找到该专栏相关信息，请检查专栏ID是否正确和网络连接是否正常', '未知', 0, 0, 0, 0, 0, 0]
+    error_return = ['未找到该专栏相关信息，请检查专栏ID是否正确和网络连接是否正常', '未知', 0, 0, 0, 0, 0, 0, aid.lower()]
     try:
-        info = asyncio.get_event_loop().run_until_complete(main(aid))
+        info = asyncio.get_event_loop().run_until_complete(main(int(aid.replace(aid[0:2], ''))))
         # 返回信息
         return_list = [
             info['title'],
@@ -23,7 +23,8 @@ def get_article_info(aid: str):
             info['stats']['like'],
             info['stats']['reply'],
             info['stats']['share'],
-            info['stats']['coin']
+            info['stats']['coin'],
+            aid.lower()
         ]
         return return_list
 
@@ -34,4 +35,4 @@ def get_article_info(aid: str):
 
 
 if __name__ == '__main__':
-    print(main('cv12032529'))
+    print(main(12032529))

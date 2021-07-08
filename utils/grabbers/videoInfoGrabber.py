@@ -3,20 +3,30 @@ from bilibili_api import video, exceptions
 import asyncio
 
 
-async def main(vid: str):
-    if vid.startswith('BV'):
-        v = video.Video(bvid=vid)
-    else:
-        v = video.Video(aid=int(vid))
+async def main_av(vid: int):
+    v = video.Video(aid=vid)
+    # 获取信息
+    info = await v.get_info()
+    return info
+
+
+async def main_bv(vid: str):
+    v = video.Video(bvid=vid)
     # 获取信息
     info = await v.get_info()
     return info
 
 
 def get_video_info(vid: str):
-    error_return = ['未找到该视频相关信息，请检查视频ID是否正确和网络连接是否正常', '未知', 0, 0, 0, 0, 0]
+    error_return = ['未找到该视频相关信息，请检查视频ID是否正确和网络连接是否正常', '未知', 0, 0, 0, 0, 0, vid]
     try:
-        info = asyncio.get_event_loop().run_until_complete(main(vid))
+        if vid.lower().startswith('av'):
+            info = asyncio.get_event_loop().run_until_complete(main_av(int(vid.replace(vid[0:2], ''))))
+            vid = vid.lower()
+        else:
+            vid = 'BV{}'.format(vid.replace(vid[0:2], ''))
+            info = asyncio.get_event_loop().run_until_complete(main_bv(vid))
+
         # 返回信息
         return_list = [
             info['title'],
@@ -25,7 +35,8 @@ def get_video_info(vid: str):
             info['stat']['like'],
             info['stat']['favorite'],
             info['stat']['danmaku'],
-            info['stat']['reply']
+            info['stat']['reply'],
+            vid
         ]
         return return_list
 

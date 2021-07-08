@@ -9,10 +9,10 @@ async def main(ssid: int):
     return info
 
 
-def get_bangumi_info(ssid: int):
+def get_bangumi_info(ssid: str):
     error_return = ['未找到该剧集的相关信息，请检查音频ID是否正确和网络连接是否正常', 0, 0, 0, 0, 0, 0, 0, ssid]
     try:
-        info = asyncio.get_event_loop().run_until_complete(main(ssid))
+        info = asyncio.get_event_loop().run_until_complete(main(int(ssid.replace(ssid[0:2], ''))))
         # 返回信息
         return_list = [
             info['title'],
@@ -23,7 +23,7 @@ def get_bangumi_info(ssid: int):
             info['stat']['favorites'],
             info['stat']['reply'],
             info['stat']['share'],
-            ssid
+            ssid.lower()
         ]
         return return_list
 
@@ -34,4 +34,4 @@ def get_bangumi_info(ssid: int):
 
 
 if __name__ == '__main__':
-    print(get_bangumi_info(10))
+    print(get_bangumi_info('ss10'))

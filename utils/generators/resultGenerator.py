@@ -1,6 +1,6 @@
 # -*-coding:utf-8-*-
-class GetResult:
 
+class GetResult:
     @staticmethod
     def generate_normal_result(title, subtitle, prefix, suffix='') -> list:
         dictionary = {
@@ -113,7 +113,7 @@ class GetResult:
             "ContextData": "ctxData",
             "JsonRPCAction": {
                 'method': 'open_page',
-                'parameters': ['https://www.bilibili.com/audio/{}'.format(args[7])],
+                'parameters': ['https://www.bilibili.com/audio/au{}'.format(args[7])],
                 'dontHideAfterAction': False
             }
         }
@@ -143,7 +143,7 @@ class GetResult:
             "ContextData": "ctxData",
             "JsonRPCAction": {
                 'method': 'open_page',
-                'parameters': ['https://www.bilibili.com//bangumi/play/ss{}'.format(args[8])],
+                'parameters': ['https://www.bilibili.com/bangumi/play/{}'.format(args[8])],
                 'dontHideAfterAction': False
             }
         }

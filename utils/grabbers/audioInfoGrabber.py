@@ -10,10 +10,10 @@ async def main(auid: int):
     return info
 
 
-def get_audio_info(auid):
-    error_return = ['未找到该音频的相关信息，请检查音频ID是否正确和网络连接是否正常', '未知', '未知', 0, 0, 0, 0]
+def get_audio_info(auid: str):
+    error_return = ['未找到该音频的相关信息，请检查音频ID是否正确和网络连接是否正常', '未知', '未知', 0, 0, 0, 0, auid]
     try:
-        info = asyncio.get_event_loop().run_until_complete(main(auid))
+        info = asyncio.get_event_loop().run_until_complete(main(int(auid.replace(auid[0:2], ''))))
         # 返回信息
         return_list = [
             info['title'],
@@ -22,7 +22,8 @@ def get_audio_info(auid):
             info['statistic']['play'],
             info['statistic']['collect'],
             info['statistic']['comment'],
-            info['statistic']['share']
+            info['statistic']['share'],
+            auid
         ]
         return return_list
 
