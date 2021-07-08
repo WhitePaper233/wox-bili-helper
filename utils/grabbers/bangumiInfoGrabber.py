@@ -1,17 +1,18 @@
 # -*-coding:utf-8-*-
-from bilibili_api import bangumi, sync, exceptions
+from bilibili_api import bangumi, exceptions
+import asyncio
 
 
-def main(ssid: int):
+async def main(ssid: int):
     # 获取信息
-    info = sync(bangumi.get_overview(season_id=ssid))
+    info = await bangumi.get_overview(season_id=ssid)
     return info
 
 
 def get_bangumi_info(ssid: int):
     error_return = ['未找到该剧集的相关信息，请检查音频ID是否正确和网络连接是否正常', 0, 0, 0, 0, 0, 0, 0, ssid]
     try:
-        info = main(ssid)
+        info = asyncio.get_event_loop().run_until_complete(main(ssid))
         # 返回信息
         return_list = [
             info['title'],

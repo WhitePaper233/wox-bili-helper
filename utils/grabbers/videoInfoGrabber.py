@@ -1,21 +1,22 @@
 # -*-coding:utf-8-*-
-from bilibili_api import video, sync, exceptions
+from bilibili_api import video, exceptions
+import asyncio
 
 
-def main(vid: str):
+async def main(vid: str):
     if vid.startswith('BV'):
         v = video.Video(bvid=vid)
     else:
         v = video.Video(aid=int(vid))
     # 获取信息
-    info = sync(v.get_info())
+    info = await v.get_info()
     return info
 
 
 def get_video_info(vid: str):
     error_return = ['未找到该视频相关信息，请检查视频ID是否正确和网络连接是否正常', '未知', 0, 0, 0, 0, 0]
     try:
-        info = main(vid)
+        info = asyncio.get_event_loop().run_until_complete(main(vid))
         # 返回信息
         return_list = [
             info['title'],
@@ -32,3 +33,7 @@ def get_video_info(vid: str):
         return error_return
     except exceptions.ResponseCodeException:
         return error_return
+
+
+if __name__ == '__main__':
+    print(get_video_info('10496'))

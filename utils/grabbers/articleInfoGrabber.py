@@ -1,18 +1,19 @@
 # -*-coding:utf-8-*-
-from bilibili_api import article, sync, exceptions
+from bilibili_api import article, exceptions
+import asyncio
 
 
-def main(aid: str):
+async def main(aid: str):
     a = article.Article(cvid=int(aid.replace(aid[0:2], '')))
     # 获取信息
-    info = sync(a.get_info())
+    info = await a.get_info()
     return info
 
 
 def get_article_info(aid: str):
     error_return = ['未找到该专栏相关信息，请检查专栏ID是否正确和网络连接是否正常', '未知', 0, 0, 0, 0, 0, 0]
     try:
-        info = main(aid)
+        info = asyncio.get_event_loop().run_until_complete(main(aid))
         # 返回信息
         return_list = [
             info['title'],
