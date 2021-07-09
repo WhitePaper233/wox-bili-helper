@@ -17,7 +17,7 @@ async def main_bv(vid: str):
     return info
 
 
-def get_video_info(vid: str):
+def get_video_info(vid: str) -> list:
     error_return = ['未找到该视频相关信息，请检查视频ID是否正确和网络连接是否正常', '未知', 0, 0, 0, 0, 0, vid]
     try:
         if vid.lower().startswith('av'):

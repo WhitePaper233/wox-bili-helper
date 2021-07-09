@@ -9,7 +9,7 @@ async def main(ssid: int):
     return info
 
 
-def get_bangumi_info(ssid: str):
+def get_bangumi_info(ssid: str) -> list:
     error_return = ['未找到该剧集的相关信息，请检查音频ID是否正确和网络连接是否正常', 0, 0, 0, 0, 0, 0, 0, ssid]
     try:
         info = asyncio.get_event_loop().run_until_complete(main(int(ssid.replace(ssid[0:2], ''))))

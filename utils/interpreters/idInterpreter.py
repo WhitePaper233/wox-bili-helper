@@ -8,7 +8,7 @@ import utils.grabbers.bangumiInfoGrabber as bangumiInfo
 
 class IDInterpreter:
     @staticmethod
-    def id_interpreter(key: str):
+    def id_interpreter(key: str) -> list:
         prefix = key[0:2].lower()
 
         if prefix == 'av' and key.replace(key[0:2], '').isdecimal() \
@@ -28,6 +28,9 @@ class IDInterpreter:
             # Advanced searching by using ssid
             return GetResult.generate_bangumi_result(bangumiInfo.get_bangumi_info(key))
 
+        else:
+            return []
+
 
 if __name__ == '__main__':
-    print(IDInterpreter.id_interpreter('ss2580'))
+    print(IDInterpreter.id_interpreter('cv'))

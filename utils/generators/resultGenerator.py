@@ -1,5 +1,6 @@
 # -*-coding:utf-8-*-
 
+
 class GetResult:
     @staticmethod
     def generate_normal_result(title, subtitle, prefix, suffix='') -> list:
@@ -151,4 +152,4 @@ class GetResult:
 
 
 if __name__ == '__main__':
-    print(GetResult.generate_search_result(key='cv12032529'))
+    print(GetResult.generate_search_result(key='av'))

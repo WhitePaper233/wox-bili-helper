@@ -1,5 +1,6 @@
 # -*-coding:utf-8-*-
 from utils.interpreters import idInterpreter, commandInterpreter
+from utils.grabbers.searchGrabber import SearchGrabber
 from utils.generators.resultGenerator import *
 
 
@@ -20,15 +21,17 @@ class BasicInterpreter:
             return GetResult.generate_search_result(key)
             # TODO: Command interpret
 
-        elif key[0:2].lower() not in ['av', 'bv', 'cv', 'au', 'ss']:
+        elif key[0:2].lower() not in ['av', 'bv', 'cv', 'au', 'ss'] or key.lower() in ['av', 'bv', 'cv', 'au', 'ss']:
             # Regular Search
-            return GetResult.generate_search_result(key)
+            return_list = GetResult.generate_search_result(key)
+            return_list.extend(SearchGrabber.get_search_result(keyword=key))
+            return return_list
 
         else:
-            result = idInterpreter.IDInterpreter.id_interpreter(key)
-            result.extend(GetResult.generate_search_result(key))
-            return result
+            return_list = idInterpreter.IDInterpreter.id_interpreter(key)
+            return_list.extend(GetResult.generate_search_result(key))
+            return return_list
 
 
 if __name__ == '__main__':
-    print(BasicInterpreter.interpret('cv4890667'))
+    print(BasicInterpreter.interpret('av1'))

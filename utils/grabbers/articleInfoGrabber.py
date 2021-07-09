@@ -10,7 +10,7 @@ async def main(aid: int):
     return info
 
 
-def get_article_info(aid: str):
+def get_article_info(aid: str) -> list:
     error_return = ['未找到该专栏相关信息，请检查专栏ID是否正确和网络连接是否正常', '未知', 0, 0, 0, 0, 0, 0, aid.lower()]
     try:
         info = asyncio.get_event_loop().run_until_complete(main(int(aid.replace(aid[0:2], ''))))
@@ -35,4 +35,4 @@ def get_article_info(aid: str):
 
 
 if __name__ == '__main__':
-    print(main(12032529))
+    print(get_article_info('cv120'))
