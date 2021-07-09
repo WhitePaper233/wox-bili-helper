@@ -18,7 +18,9 @@ class BasicInterpreter:
             return return_list
 
         elif key.startswith('-'):
-            return GetResult.generate_search_result(key)
+            return_list = GetResult.generate_search_result(key)
+            return_list.extend(SearchGrabber.get_search_result(keyword=key))
+            return return_list
             # TODO: Command interpret
 
         elif key[0:2].lower() not in ['av', 'bv', 'cv', 'au', 'ss'] or key.lower() in ['av', 'bv', 'cv', 'au', 'ss']:
@@ -30,6 +32,7 @@ class BasicInterpreter:
         else:
             return_list = idInterpreter.IDInterpreter.id_interpreter(key)
             return_list.extend(GetResult.generate_search_result(key))
+            return_list.extend(SearchGrabber.get_search_result(keyword=key))
             return return_list
 
 

@@ -1,7 +1,8 @@
+# -*-coding:utf-8-*-
 import requests
-from utils.grabbers.videoInfoGrabber import get_video_info
-from utils.generators.resultGenerator import GetResult
 import threading
+import asyncio
+from utils.generators.searchResultGenerator import format_result
 
 
 class SearchGrabber:
@@ -24,28 +25,22 @@ class SearchGrabber:
                 response_ctx = response.json()
                 if bool(response_ctx['code']) is False:
                     return_list = []
-
-                    def format_result(response_result):
-                        return_list.extend(GetResult.generate_video_result(get_video_info(
-                            response_result['arcurl'].replace('http://www.bilibili.com/video/', ''))))
-
-                    i = 0
                     try:
+                        i = 0
                         for result in response_ctx['data']['result']:
                             i += 1
                             if i <= length:
-                                thread = threading.Thread(target=format_result(result))
-                                thread.start()
+                                return_list.extend(format_result(
+                                    result['arcurl'].replace('http://www.bilibili.com/video/av', '')))
                         return return_list
+
                     except KeyError:
                         return []
-
                 else:
                     return []
-
             except requests.exceptions.Timeout:
                 return []
 
 
 if __name__ == '__main__':
-    print(SearchGrabber.get_search_result(keyword='asdasdawedsafafa'))
+    print(SearchGrabber.get_search_result(keyword='新宝岛'))
